@@ -19,3 +19,70 @@
   <script src="script.js"></script>
 </body>
 </html>
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #e1c6f4, #e6b3d1); /* Fondo en tonos morados y rosas */
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+.heart {
+  position: relative;
+  width: 200px;
+  height: 180px;
+  cursor: pointer;
+}
+
+.heart-inner {
+  width: 200px;
+  height: 200px;
+  background: #f76ec6; /* Color rosado */
+  clip-path: polygon(50% 0%, 100% 20%, 100% 60%, 50% 100%, 0% 60%, 0% 20%);
+  transition: transform 0.5s ease;
+  transform-origin: center;
+}
+
+.heart:hover .heart-inner {
+  transform: scale(1.1);
+}
+
+.message {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#heart:hover + .message {
+  display: block;
+}
+document.getElementById("heart").addEventListener("click", function() {
+  const heartInner = document.getElementById("heart-inner");
+  const message = document.getElementById("message");
+
+  // Si el corazón ya se ha "abierto", mostrar el mensaje
+  if (heartInner.style.transform === "rotate(45deg)") {
+    message.style.display = "block"; // Mostrar mensaje
+  } else {
+    // Cambiar la rotación del corazón para simular que se abre
+    heartInner.style.transform = "rotate(45deg)";
+  }
+});
